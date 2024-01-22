@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:3000", // Replace with your API URL
+        target: "https://backend-of-inventory-management-system.vercel.app", // Replace with your API URL
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
