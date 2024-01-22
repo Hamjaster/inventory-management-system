@@ -34,10 +34,7 @@ export default function AddPurchase() {
     };
 
     useEffect(() => {
-        // if (product !== "" && !productDropdown) {
-        //     setproductDropdown(true)
-        // }
-        // setProductId('')
+
 
         if (!isSelected) {
             setProductId('')
@@ -49,16 +46,17 @@ export default function AddPurchase() {
         setLoading(true)
         let product_id;
         console.log(productId, "This is PRODUCTID")
+
         // Adding product if prodcutId id null
         if (productId === "") {
             try {
                 var { data } = await axios.post(`${import.meta.env.VITE_API}/product`, {
                     title: product,
                     price: Number(formData.price) / Number(formData.quantity),
-                    stock: Number(formData.quantity)
+                    stock: 0
                 })
                 console.log(data)
-                product_id = data.data._id
+                product_id = data.message._id
             } catch (error) {
                 console.log(error)
             }
@@ -79,9 +77,13 @@ export default function AddPurchase() {
                 totalPrice: Number(formData.price)
             })
             console.log(data)
-            navigate('/purchases')
+            if (data.success) {
+                toast.success('Purchases Added')
+                navigate('/purchases')
+            }
             setLoading(false)
         } catch (error) {
+            toast.success(error.response.data.message)
             setLoading(false)
             console.log(error)
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 export default function useSales() {
 
@@ -14,12 +15,12 @@ export default function useSales() {
             console.log(data)
             if (data.success) {
                 setLoading(false)
-                setSales(data.data)
-                console.log(data.data)
+                setSales(data.message)
+                console.log(data.message)
 
             } else {
                 setLoading(false)
-
+                toast.error(data.message)
             }
         } catch (error) {
             setLoading(false)

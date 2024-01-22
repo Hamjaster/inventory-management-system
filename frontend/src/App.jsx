@@ -1,4 +1,4 @@
-
+import toast, { Toaster } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import './App.css';
 import Home from './pages/Home';
@@ -11,6 +11,7 @@ function App() {
 
   return (
     <div className="App font-nuito ">
+      <Toaster />
       <Home />
     </div>
   );

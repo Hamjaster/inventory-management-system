@@ -143,7 +143,7 @@ export default function purchases() {
 
             </div>
 
-            <div className="table mt-12 bg-black min-w-full">
+            <div className="table mt-12 min-w-full">
                 <DataTable
                     columns={columns}
                     data={

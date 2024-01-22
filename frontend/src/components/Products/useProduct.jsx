@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 export default function useProduct(count) {
 
     const [products, setProducts] = useState([])
@@ -35,10 +36,11 @@ export default function useProduct(count) {
             console.log(data)
             if (data.success) {
                 setLoading(false)
-                setProducts(data.data)
-                console.log(data.data)
+                setProducts(data.message)
+                console.log(data.message)
 
             } else {
+                toast.error(data.message)
                 setLoading(false)
 
             }

@@ -51,7 +51,7 @@ export default function Sidebar({ setShowSidebar }) {
                         </div>
                         <Link to={'/suppliers'} className='text-xl'>Suppliers</Link>
                     </div>
-                    <div className="flex flex-row space-x-5 items-center ">
+                    <div onClick={() => setShowSidebar(false)} className="flex flex-row space-x-5 items-center ">
                         <div className="text-3xl">
                             <MdProductionQuantityLimits />
                         </div>

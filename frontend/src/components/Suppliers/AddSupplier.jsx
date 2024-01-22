@@ -1,6 +1,20 @@
 import React from 'react'
 
 export default function AddSupplier() {
+    const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        address: '',
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
     return (
 
 
@@ -12,13 +26,13 @@ export default function AddSupplier() {
                     <h2 class="text-3xl text-[#333] font-bold">Create a Supplier</h2>
                     <form class="mt-8 grid sm:grid-cols-2 gap-6 text-xl">
 
-                        <input type='text' placeholder='Supplier Name'
+                        <input onChange={handleInputChange} name='name' type='text' placeholder='Supplier Name'
                             class="w-full rounded py-2.5 px-4 border-2  outline-[#0096C3]" />
 
-                        <input type='number' placeholder='Supplier Phone'
+                        <input onChange={handleInputChange} name='phone' type='number' placeholder='Supplier Phone'
                             class="w-full rounded py-2.5 px-4 border-2  outline-[#0096C3]" />
 
-                        <input type='address' placeholder='Supplier Address'
+                        <input onChange={handleInputChange} name='address' type='address' placeholder='Supplier Address'
                             class="w-full rounded py-2.5 px-4 border-2  outline-[#0096C3]" />
 
 

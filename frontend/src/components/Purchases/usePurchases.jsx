@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast';
+
 
 export default function usePurchase() {
 
@@ -14,12 +16,10 @@ export default function usePurchase() {
             console.log(data)
             if (data.success) {
                 setLoading(false)
-                setPurchases(data.data)
-                console.log(data.data)
-
+                setPurchases(data.message)
             } else {
+                toast.error(data.message)
                 setLoading(false)
-
             }
         } catch (error) {
             setLoading(false)

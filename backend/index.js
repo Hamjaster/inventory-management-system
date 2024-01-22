@@ -19,12 +19,12 @@ app.get('/product', async (req, res) => {
         const fProduct = await Product.find()
         res.send({
             success: true,
-            data: fProduct
+            message: fProduct
         })
     } catch (error) {
         res.send({
             success: false,
-            data: error
+            message: error
         })
     }
 })
@@ -36,12 +36,12 @@ app.delete('/product/:id', async (req, res) => {
         console.log(fProduct)
         res.send({
             success: true,
-            data: fProduct
+            message: fProduct
         })
     } catch (error) {
         res.send({
             success: false,
-            data: error
+            message: error
         })
     }
 })
@@ -57,13 +57,13 @@ app.post('/product', async (req, res) => {
         console.log(productCreated)
         res.send({
             success: true,
-            data: productCreated
+            message: productCreated
         })
     } catch (error) {
         console.log(error)
         res.send({
             success: false,
-            data: error
+            message: error
         })
     }
 })
@@ -75,12 +75,12 @@ app.get('/supplier', async (req, res) => {
         const Fsupplier = await Supplier.find()
         res.send({
             success: true,
-            data: Fsupplier
+            message: Fsupplier
         })
     } catch (error) {
         res.send({
             success: false,
-            data: error
+            message: error
         })
     }
 })
@@ -92,12 +92,12 @@ app.delete('/supplier/:id', async (req, res) => {
         console.log(Sup)
         res.send({
             success: true,
-            data: Sup
+            message: Sup
         })
     } catch (error) {
         res.send({
             success: false,
-            data: error
+            message: error
         })
     }
 })
@@ -111,12 +111,12 @@ app.post('/supplier', async (req, res) => {
         })
         res.send({
             success: true,
-            data: "Supplier Added Successfuly"
+            message: "Supplier Added Successfuly"
         })
     } catch (error) {
         res.send({
             success: false,
-            data: error
+            message: error
         })
     }
 })
@@ -128,12 +128,12 @@ app.get('/purchase', async (req, res) => {
         const purchases = await Purchase.find().populate('product').populate('supplier')
         res.send({
             success: true,
-            data: purchases
+            message: purchases
         })
     } catch (error) {
         res.send({
             success: false,
-            data: error
+            message: error
         })
     }
 })
@@ -195,12 +195,12 @@ app.get('/sale', async (req, res) => {
         const sales = await Sale.find().populate('product')
         res.send({
             success: true,
-            data: sales
+            message: sales
         })
     } catch (error) {
         res.send({
             success: false,
-            data: error
+            message: error
         })
     }
 })
@@ -211,7 +211,7 @@ app.post('/sale', async (req, res) => {
     let productToSell = await Product.findById(product)
 
     if (productToSell.stock < qty) {
-        res.status(500).json({ success: false, message: 'The Quantity you are selling is less than stock you have' });
+        res.status(500).json({ success: false, message: 'Stock is less than your selling quantity' });
     } else {
 
         // Decreasing the product stock on sale
@@ -250,11 +250,6 @@ app.post('/sale', async (req, res) => {
     }
 
 
-})
-
-app.get('/test', async (req, res) => {
-    await Customer.create({ name: 'Ramzan Ali' });
-    res.send({ msg: 'done' })
 })
 
 

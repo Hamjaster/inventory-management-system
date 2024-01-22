@@ -4,6 +4,7 @@ import useProduct from '../Products/useProduct'
 import axios from 'axios'
 import { CgSpinner } from "react-icons/cg";
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 export default function AddPurchase() {
     const [loading, setLoading] = useState(false)
     const { products } = useProduct()
@@ -42,10 +43,16 @@ export default function AddPurchase() {
                 totalPrice: Number(formData.price)
             })
             console.log(data)
-            navigate('/sales')
+            if (data.success) {
+                toast.success('Sale Added')
+                navigate('/sales')
+            } else {
+                toast.error(data.message)
+            }
             setLoading(false)
         } catch (error) {
             console.log(error)
+            toast.error(error.response.data.message)
             setLoading(false)
         }
     };

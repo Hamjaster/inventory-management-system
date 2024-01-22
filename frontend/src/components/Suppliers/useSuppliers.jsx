@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 export default function useSupplier(count) {
 
     const [suppliers, setSuppliers] = useState([])
@@ -14,10 +15,11 @@ export default function useSupplier(count) {
             console.log(data)
             if (data.success) {
                 setLoading(false)
-                setSuppliers(data.data)
+                setSuppliers(data.message)
             } else {
                 setLoading(false)
-                console.log(data.data)
+                toast.error(data.message)
+                console.log(data.message)
             }
         } catch (error) {
             setLoading(false)
