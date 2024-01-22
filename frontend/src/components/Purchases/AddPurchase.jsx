@@ -71,7 +71,7 @@ export default function AddPurchase() {
         // Your submit logic here using formData
         console.log(product_id)
         try {
-            const { data } = await axios.post('/purchase', {
+            const { data } = await axios.post('/api//purchase', {
                 product: product_id,
                 category: formData.category,
                 supplier: formData.supplier,
