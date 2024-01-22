@@ -26,26 +26,26 @@ export default function Sidebar({ setShowSidebar }) {
 
                 <div className="items [&>*]:cursor-pointer font-light my-14 flex flex-col space-y-8">
 
-                    <div className="flex flex-row space-x-5 items-center ">
+                    <div onClick={() => setShowSidebar(false)} className="flex flex-row space-x-5 items-center ">
                         {/* <img src={dashboard} alt="" srcset="" /> */}
                         <div className="text-3xl">
                             <MdOutlineDashboard />
                         </div>
-                        <Link to={'/dashboard'} className='text-xl'>Dashboard</Link>
+                        <Link to={'/'} className='text-xl'>Dashboard</Link>
                     </div>
-                    <div className="flex flex-row space-x-5 items-center ">
+                    <div onClick={() => setShowSidebar(false)} className="flex flex-row space-x-5 items-center ">
                         <div className="text-3xl">
                             <BiSolidPurchaseTag />
                         </div>
                         <Link to={'/purchases'} className='text-xl'>Purchases</Link>
                     </div>
-                    <div className="flex flex-row space-x-5 items-center ">
+                    <div onClick={() => setShowSidebar(false)} className="flex flex-row space-x-5 items-center ">
                         <div className="text-3xl">
                             <TbFileInvoice />
                         </div>
                         <Link to={'/sales'} className='text-xl'>Sales</Link>
                     </div>
-                    <div className="flex flex-row space-x-5 items-center ">
+                    <div onClick={() => setShowSidebar(false)} className="flex flex-row space-x-5 items-center ">
                         <div className="text-3xl">
                             <TbUsers />
                         </div>
