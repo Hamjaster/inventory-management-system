@@ -45,7 +45,7 @@ export default function Home() {
                 }>
                     <Routes>
 
-                        <Route path='/dashboard' element={<Dashboard />} />
+                        <Route path='/' element={<Dashboard />} />
                         <Route path='/purchases' element={<Purchases />} />
                         <Route path='/sales' element={<Sales />} />
                         <Route path='/purchases/add' element={<AddPurchase />} />
