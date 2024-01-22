@@ -10,7 +10,7 @@ export default function useSupplier(count) {
     const getSuppliers = async () => {
         setLoading(true)
         try {
-            const { data } = await axios.get("http://localhost:3000/supplier")
+            const { data } = await axios.get("/supplier")
             console.log(data)
             if (data.success) {
                 setLoading(false)
@@ -28,7 +28,7 @@ export default function useSupplier(count) {
     const deleteSupplier = async (id) => {
         setLoading(true)
         try {
-            const { data } = await axios.delete(`http://localhost:3000/supplier/${id}`)
+            const { data } = await axios.delete(`/supplier/${id}`)
             return data
         } catch (error) {
             return error

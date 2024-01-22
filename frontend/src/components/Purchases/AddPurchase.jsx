@@ -52,7 +52,7 @@ export default function AddPurchase() {
         // Adding product if prodcutId id null
         if (productId === "") {
             try {
-                var { data } = await axios.post("http://localhost:3000/product", {
+                var { data } = await axios.post("/product", {
                     title: product,
                     price: Number(formData.price) / Number(formData.quantity),
                     stock: Number(formData.quantity)
@@ -71,7 +71,7 @@ export default function AddPurchase() {
         // Your submit logic here using formData
         console.log(product_id)
         try {
-            const { data } = await axios.post('http://localhost:3000/purchase', {
+            const { data } = await axios.post('/purchase', {
                 product: product_id,
                 category: formData.category,
                 supplier: formData.supplier,

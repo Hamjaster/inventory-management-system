@@ -10,7 +10,7 @@ export default function useSales() {
     const getSales = async () => {
         setLoading(true)
         try {
-            const { data } = await axios.get("http://localhost:3000/sale")
+            const { data } = await axios.get("/sale")
             console.log(data)
             if (data.success) {
                 setLoading(false)

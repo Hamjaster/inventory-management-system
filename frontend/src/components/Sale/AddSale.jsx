@@ -34,7 +34,7 @@ export default function AddPurchase() {
         console.log(formData);
         setLoading(true)
         try {
-            const { data } = await axios.post('http://localhost:3000/sale', {
+            const { data } = await axios.post('/sale', {
                 product: formData.product,
                 category: formData.category,
                 customer: formData.customer,

@@ -10,7 +10,7 @@ export default function usePurchase() {
     const getPurchases = async () => {
         setLoading(true)
         try {
-            const { data } = await axios.get("http://localhost:3000/purchase")
+            const { data } = await axios.get("/purchase")
             console.log(data)
             if (data.success) {
                 setLoading(false)
