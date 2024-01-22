@@ -10,7 +10,7 @@ export default function useSales() {
     const getSales = async () => {
         setLoading(true)
         try {
-            const { data } = await axios.get("/api/sale")
+            const { data } = await axios.get(`${import.meta.env.VITE_API}/sale`)
             console.log(data)
             if (data.success) {
                 setLoading(false)

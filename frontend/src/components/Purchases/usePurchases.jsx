@@ -10,7 +10,7 @@ export default function usePurchase() {
     const getPurchases = async () => {
         setLoading(true)
         try {
-            const { data } = await axios.get("/api/purchase")
+            const { data } = await axios.get(`${import.meta.env.VITE_API}/purchase`)
             console.log(data)
             if (data.success) {
                 setLoading(false)

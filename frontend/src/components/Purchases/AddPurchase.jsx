@@ -52,7 +52,7 @@ export default function AddPurchase() {
         // Adding product if prodcutId id null
         if (productId === "") {
             try {
-                var { data } = await axios.post("/product", {
+                var { data } = await axios.post(`${import.meta.env.VITE_API}/product`, {
                     title: product,
                     price: Number(formData.price) / Number(formData.quantity),
                     stock: Number(formData.quantity)
@@ -71,7 +71,7 @@ export default function AddPurchase() {
         // Your submit logic here using formData
         console.log(product_id)
         try {
-            const { data } = await axios.post('/api//purchase', {
+            const { data } = await axios.post(`${import.meta.env.VITE_API}/purchase`, {
                 product: product_id,
                 category: formData.category,
                 supplier: formData.supplier,

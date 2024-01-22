@@ -9,7 +9,7 @@ export default function useProduct(count) {
     const addProduct = async (title, unitPrice, stock) => {
         setLoading(true)
         try {
-            const { data } = await axios.post("/api/product", {
+            const { data } = await axios.post(`${import.meta.env.VITE_API}/product`, {
                 title,
                 price: unitPrice,
                 stock
@@ -31,7 +31,7 @@ export default function useProduct(count) {
     const getProducts = async () => {
         setLoading(true)
         try {
-            const { data } = await axios.get("/api/product")
+            const { data } = await axios.get(`${import.meta.env.VITE_API}/product`)
             console.log(data)
             if (data.success) {
                 setLoading(false)
@@ -51,7 +51,7 @@ export default function useProduct(count) {
     const deleteProduct = async (id) => {
         setLoading(true)
         try {
-            const { data } = await axios.delete(`/api/product/${id}`)
+            const { data } = await axios.delete(`${import.meta.env.VITE_API}/product/${id}`)
             return data
         } catch (error) {
             return error

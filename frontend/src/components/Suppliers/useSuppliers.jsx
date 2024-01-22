@@ -10,7 +10,7 @@ export default function useSupplier(count) {
     const getSuppliers = async () => {
         setLoading(true)
         try {
-            const { data } = await axios.get("/api/supplier")
+            const { data } = await axios.get(`${import.meta.env.VITE_API}/supplier`)
             console.log(data)
             if (data.success) {
                 setLoading(false)
@@ -28,7 +28,7 @@ export default function useSupplier(count) {
     const deleteSupplier = async (id) => {
         setLoading(true)
         try {
-            const { data } = await axios.delete(`/api/supplier/${id}`)
+            const { data } = await axios.delete(`${import.meta.env.VITE_API}/supplier/${id}`)
             return data
         } catch (error) {
             return error

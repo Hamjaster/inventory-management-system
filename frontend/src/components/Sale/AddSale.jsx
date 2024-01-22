@@ -34,7 +34,7 @@ export default function AddPurchase() {
         console.log(formData);
         setLoading(true)
         try {
-            const { data } = await axios.post('/api/sale', {
+            const { data } = await axios.post(`${import.meta.env.VITE_API}/sale`, {
                 product: formData.product,
                 category: formData.category,
                 customer: formData.customer,

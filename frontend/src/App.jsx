@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 function App() {
 
+  console.log(import.meta.env.VITE_API)
+
   return (
     <div className="App font-nuito ">
       <Home />
