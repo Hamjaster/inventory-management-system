@@ -44,6 +44,6 @@ export default function useSupplier(count) {
 
 
 
-    return { suppliers, deleteSupplier }
+    return { suppliers, deleteSupplier, loading }
 }
 

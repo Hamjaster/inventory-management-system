@@ -36,6 +36,6 @@ export default function usePurchase() {
     }, [purchases])
 
 
-    return { purchases }
+    return { purchases, loading }
 }
 

@@ -37,6 +37,6 @@ export default function useSales() {
     }, [sales])
 
 
-    return { sales }
+    return { sales, loading }
 }
 

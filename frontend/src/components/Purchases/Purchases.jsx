@@ -7,14 +7,13 @@ import { MdDelete, MdEditSquare } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import usePurchase from './usePurchases';
 import { formatLargeNumber, parseDate } from '../../utils';
+import { VscLoading } from 'react-icons/vsc';
 
 
 export default function purchases() {
     const [searchQuery, setSearchQuery] = useState("")
-    const [loading, setLoading] = useState(false)
 
-
-    const { purchases } = usePurchase()
+    const { purchases, loading } = usePurchase()
 
     const tableCustomStyles = {
         headCells: {
@@ -144,15 +143,22 @@ export default function purchases() {
             </div>
 
             <div className="table mt-12 min-w-full">
-                <DataTable
-                    columns={columns}
-                    data={
-                        dataAfterFiltering()
-                    }
-                    customStyles={tableCustomStyles}
-                    pagination={!searchQuery}
-                    paginationComponentOptions={paginationComponentOptions}
-                />
+                {loading ?
+                    <div className='flex   items-center  w-full justify-center '>
+                        <div className="logo h-min w-min animate-spin text-5xl text-blue-600">
+                            <VscLoading />
+                        </div>
+                    </div>
+                    :
+                    <DataTable
+                        columns={columns}
+                        data={
+                            dataAfterFiltering()
+                        }
+                        customStyles={tableCustomStyles}
+                        pagination={!searchQuery}
+                        paginationComponentOptions={paginationComponentOptions}
+                    />}
             </div>
 
         </>

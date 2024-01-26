@@ -8,12 +8,12 @@ import { MdDelete, MdEditSquare } from "react-icons/md";
 import { Link, Outlet, Route, Routes } from 'react-router-dom';
 import AddSupplier from './AddSupplier';
 import useSupplier from './useSuppliers';
+import { VscLoading } from 'react-icons/vsc';
 
 export default function Suppliers() {
     const [searchQuery, setSearchQuery] = useState("")
-    const [loading, setLoading] = useState(false)
     const [count, setCount] = useState(0)
-    const { suppliers, deleteSupplier } = useSupplier(count)
+    const { suppliers, deleteSupplier, loading } = useSupplier(count)
 
     const handleDelete = async (id) => {
         const data = await deleteSupplier(id)
@@ -123,16 +123,28 @@ export default function Suppliers() {
 
             </div>
 
-            <div className="table mt-12 bg-black min-w-full">
-                <DataTable
-                    columns={columns}
-                    data={
-                        dataAfterFiltering()
-                    }
-                    customStyles={tableCustomStyles}
-                    pagination={!searchQuery}
-                    paginationComponentOptions={paginationComponentOptions}
-                />
+            <div className="table mt-12 min-w-full">
+                {
+                    loading
+                        ?
+                        <div className='flex   items-center h-full w-full justify-center '>
+                            <div className="logo h-min w-min animate-spin text-5xl text-blue-600">
+                                <VscLoading />
+                            </div>
+                        </div>
+                        :
+
+                        <DataTable
+                            columns={columns}
+                            data={
+                                dataAfterFiltering()
+                            }
+                            customStyles={tableCustomStyles}
+                            pagination={!searchQuery}
+                            paginationComponentOptions={paginationComponentOptions}
+                        />
+                }
+
             </div>
 
         </>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component';
 import { IoIosAddCircle } from "react-icons/io";
 import { FaSearch } from "react-icons/fa";
@@ -9,13 +9,13 @@ import { formatLargeNumber, parseDate } from '../../utils';
 import useSales from './useSales';
 import { GoArrowDown } from "react-icons/go";
 import { GoArrowUp } from "react-icons/go";
+import { VscLoading } from 'react-icons/vsc';
 
 export default function purchases() {
     const [searchQuery, setSearchQuery] = useState("")
-    const [loading, setLoading] = useState(false)
 
 
-    const { sales } = useSales()
+    const { sales, loading } = useSales()
 
     const tableCustomStyles = {
         headCells: {
@@ -142,6 +142,8 @@ export default function purchases() {
     }
 
 
+
+
     return (
 
         <>
@@ -172,15 +174,26 @@ export default function purchases() {
             </div>
 
             <div className="table mt-12  min-w-full">
-                <DataTable
-                    columns={columns}
-                    data={
-                        dataAfterFiltering()
-                    }
-                    customStyles={tableCustomStyles}
-                    pagination={!searchQuery}
-                    paginationComponentOptions={paginationComponentOptions}
-                />
+                {
+                    loading
+                        ?
+                        <div className='flex   items-center h-full w-full justify-center '>
+                            <div className="logo h-min w-min animate-spin text-5xl text-blue-600">
+                                <VscLoading />
+                            </div>
+                        </div>
+                        :
+
+                        <DataTable
+                            columns={columns}
+                            data={
+                                dataAfterFiltering()
+                            }
+                            customStyles={tableCustomStyles}
+                            pagination={!searchQuery}
+                            paginationComponentOptions={paginationComponentOptions}
+                        />
+                }
             </div>
 
         </>
