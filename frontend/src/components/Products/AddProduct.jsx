@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MdArrowDropDown } from 'react-icons/md';
 import useProduct from './useProduct';
 import { useNavigate } from 'react-router-dom';
-
+import toast from 'react-hot-toast'
 export default function AddProduct() {
     const { addProduct, loading } = useProduct();
     const navigate = useNavigate()
