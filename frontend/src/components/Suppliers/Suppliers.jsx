@@ -13,12 +13,9 @@ import { VscLoading } from 'react-icons/vsc';
 export default function Suppliers() {
     const [searchQuery, setSearchQuery] = useState("")
     const [count, setCount] = useState(0)
-    const { suppliers, deleteSupplier, loading } = useSupplier(count)
+    const { suppliers, loading } = useSupplier(count)
 
-    const handleDelete = async (id) => {
-        const data = await deleteSupplier(id)
-        console.log(data)
-    }
+
 
     const tableCustomStyles = {
         headCells: {
@@ -57,18 +54,7 @@ export default function Suppliers() {
             cell: row => <span>{row.phone}</span>,
             selector: row => row.phone,
         },
-        {
-            name: 'Action',
-            cell: (r) => {
-                return (
-                    <span className='flex flex-row text-3xl space-x-6 items-center'>
-                        <div onClick={() => handleDelete(r._id)} className="del text-red-500 hover:text-red-700 transition-all cursor-pointer">
-                            <MdDelete />
-                        </div>
-                    </span>
-                )
-            }
-        }
+
     ];
 
     const paginationComponentOptions = {
