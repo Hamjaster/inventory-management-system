@@ -96,7 +96,7 @@ export default function Suppliers() {
                         setSearchQuery(e.target.value)
                     }} />
                 </div>
-                <div className="actions w-2/5 sm:w-1/4">
+                {/* <div className="actions w-2/5 sm:w-1/4">
                     <Link to={'/suppliers/add'} className="create flex justify-center flex-row items-center space-x-2 bg-[#00BE95] hover:bg-[#01876a] transition-all text-white text-center px-2 py-3 sm:px-4 text-sm sm:text-lg sm:py-2 cursor-pointer">
                         <div className="icon text-2xl text-white">
                             <IoIosAddCircle />
@@ -105,7 +105,7 @@ export default function Suppliers() {
                             Add Supplier
                         </div>
                     </Link>
-                </div>
+                </div> */}
 
             </div>
 
