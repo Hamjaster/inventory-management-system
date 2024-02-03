@@ -241,7 +241,7 @@ app.post('/sale', async (req, res) => {
             await newSale.save();
 
             // Send a success response
-            res.status(201).json({ success: true, message: 'Sale created successfully' });
+            res.status(201).json({ success: true, message: newSale });
         } catch (error) {
             // Handle errors
             console.error(error);

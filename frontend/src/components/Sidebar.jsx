@@ -5,7 +5,6 @@ import sch from '../images/schedule_icon.svg'
 import user from '../images/user_icon.svg'
 import settings from '../images/setting_icon.svg'
 import { AiFillCustomerService, AiOutlineClose } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
 import { MdDashboard, MdOutlineDashboard, MdProductionQuantityLimits } from "react-icons/md";
 import { LuUsers } from "react-icons/lu";
 import { TbFileInvoice, TbUsers } from 'react-icons/tb'
