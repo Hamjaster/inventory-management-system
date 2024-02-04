@@ -8,7 +8,7 @@ const Supplier = require('./models/SupplierModel')
 var cors = require('cors')
 
 const app = express()
-const port = 3000
+const port = 5000
 connectDB()
 app.use(express.json());
 app.use(cors())
@@ -160,7 +160,7 @@ app.post('/purchase', async (req, res) => {
             supplier,
             qty,
             totalPrice
-        });
+        })
 
         if (newPurchase) {
             console.log(newPurchase)
@@ -169,7 +169,7 @@ app.post('/purchase', async (req, res) => {
                 { _id: product },
                 { $inc: { stock: qty } },
                 { new: true }
-            );
+            )
 
             // Update product price with the weighted average cost
             let purchaseUnitPrice = totalPrice / qty;
@@ -177,7 +177,9 @@ app.post('/purchase', async (req, res) => {
 
             await productToPurchase.save()
 
-            res.status(201).json({ success: true, message: newPurchase });
+            const purchaseFound = await Purchase.findById(newPurchase._id).populate('product').populate('supplier')
+
+            res.status(201).json({ success: true, message: purchaseFound });
         } else {
             res.status(500).json({ success: false, message: "Purchase couldn't create" });
         }
@@ -240,8 +242,10 @@ app.post('/sale', async (req, res) => {
             // Save the purchase to the database
             await newSale.save();
 
+            const saleFound = await Sale.findById(newSale._id).populate('product')
+
             // Send a success response
-            res.status(201).json({ success: true, message: newSale });
+            res.status(201).json({ success: true, message: saleFound });
         } catch (error) {
             // Handle errors
             console.error(error);
